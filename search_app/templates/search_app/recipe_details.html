@@ -8,18 +8,16 @@
   <body>
     <h2>Recipe Details for Meal ID: {{ meal_id }}</h2>
 
-    {% for meal in data %}
-        <ul>
-            <li>{{ meal_title }}</li>
-            <li><img src="{{ meal_image }}" alt="Meal Thumbnail"></li>
-            {% for item in meal_ingredients %}
-                <li>{{ item }}</li>
-            {% endfor %}
-            <li>Region - {{ meal_culture }}</li>
-            <li>Cetegory - {{ meal_category }}</li>
-            <li><a href="{{ meal_source }}">Link to the meal's source</a></li>
-            <li>{{ meal_instructions }}</li>
-        </ul>
-    {% endfor %}
+    <ul>
+        <li>{{ meal_title }}</li>
+        <li><img src="{{ meal_image }}" alt="Meal Thumbnail"></li>
+        {% for item in meal_ingredients %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        <li>Region - {{ meal_culture }}</li>
+        <li>Cetegory - {{ meal_category }}</li>
+        <li><a href="{{ meal_source }}">Link to the meal's source</a></li>
+        <li>{{ meal_instructions }}</li>
+    </ul>
   </body>
 </html>

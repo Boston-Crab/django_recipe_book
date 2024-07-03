@@ -47,8 +47,8 @@ def get_recipe_by_id(request, meal_id):
                                 meal['strIngredient'+str(measurement_count)] + " - " + meal[measurement_key]
                             )
                             del meal[measurement_key]
+
             context = {
-                'data': data['meals'],
                 'meal_id': data['meals'][0]['idMeal'],
                 'meal_title': data['meals'][0]['strMeal'],
                 'meal_category': data['meals'][0]['strCategory'],
