@@ -5,6 +5,10 @@
 </head>
 <body>
     <h1>Search for Recipes</h1>
+    <br>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
     <form action="{% url 'get_recipes' %}" method="get">
         <label for="search_term">Search Term:</label>
         <input type="text" id="search_term" name="search_term" required>
