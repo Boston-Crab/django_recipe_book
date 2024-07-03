@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% for meal in data %}
+    <ul>
+        <li>{{ meal.idMeal }}</li>
+        <li>{{ meal.strMeal }}</li>
+        <li><a href="{% url 'get_recipe_by_id' meal.idMeal %}"><img src="{{ meal.strMealThumb }}" alt="Meal Thumbnail"></a></li>
+        <li>Category: {{ meal.strCategory }}</li>
+        <li>Culture - {{ meal.strArea }}</li>
+    </ul>
+    {% endfor %}
+  </body>
+</html>
