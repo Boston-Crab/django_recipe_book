@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recipe Search</title>
+</head>
+<body>
+    <h1>Search for Recipes</h1>
+    <form action="{% url 'get_recipes' %}" method="get">
+        <label for="search_term">Search Term:</label>
+        <input type="text" id="search_term" name="search_term" required>
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
