@@ -62,7 +62,7 @@ ROOT_URLCONF = "recipe_book.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],
+        "DIRS": ['recipe_book/templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
