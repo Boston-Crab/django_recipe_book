@@ -1,23 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipe Details</title>
-  </head>
-  <body>
-    <h2>Recipe Details for Meal ID: {{ meal_id }}</h2>
+{% extends "search_app/base.html" %}
 
-    <ul>
-        <li>{{ meal_title }}</li>
-        <li><img src="{{ meal_image }}" alt="Meal Thumbnail"></li>
-        {% for item in meal_ingredients %}
-            <li>{{ item }}</li>
-        {% endfor %}
-        <li>Region - {{ meal_culture }}</li>
-        <li>Cetegory - {{ meal_category }}</li>
-        <li><a href="{{ meal_source }}">Link to the meal's source</a></li>
-        <li>{{ meal_instructions }}</li>
-    </ul>
-  </body>
-</html>
+{% block content %}
+<h2>Recipe Details for Meal ID: {{ meal_id }}</h2>
+
+<ul>
+    <li>{{ meal_title }}</li>
+    <li><img src="{{ meal_image }}" alt="Meal Thumbnail"></li>
+    {% for item in meal_ingredients %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    <li>Region - {{ meal_culture }}</li>
+    <li>Cetegory - {{ meal_category }}</li>
+    <li><a href="{{ meal_source }}">Link to the meal's source</a></li>
+    <li>{{ meal_instructions }}</li>
+</ul>
+{% endblock content %}

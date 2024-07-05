@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Recipe Search</title>
-</head>
-<body>
-    <h1>Search for Recipes</h1>
+{% extends "search_app/base.html" %}
+
+{% block content %}
+<h1>Search for Recipes</h1>
     <br>
     {% if message %}
     <p>{{ message }}</p>
@@ -15,5 +12,4 @@
         <input type="text" id="search_term" name="search_term" required>
         <button type="submit">Search</button>
     </form>
-</body>
-</html>
+{% endblock content %}
