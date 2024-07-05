@@ -8,15 +8,15 @@
 </head>
 <header>
     <h1>Meal Recipes Django Web App Using TheMealDB API</h1>
-    <a href="">
+    <a href="{% url 'recipes:index' %}">
         <button>Home</button>
     </a>
     {% if request.user.is_authenticated %}
         <p>{{ request.user.username|capfirst }}</p>
-        <a href="{% url 'user:logout' %}">Logout</a>
+        <a href="{% url 'user:logout' %}"><button>Logout</button></a>
     {% else %}
-        <a href="{% url 'user:login' %}">Login</a>
-        <a href="{% url 'user:signup' %}">Signup</a>
+        <a href="{% url 'user:login' %}"><button>Login</button></a>
+        <a href="{% url 'user:signup' %}"><button>Signup</button></a>
     {% endif %}
 </header>
 <body>
