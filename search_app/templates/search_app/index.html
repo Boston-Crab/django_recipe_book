@@ -9,7 +9,8 @@
     {% if message %}
     <p>{{ message }}</p>
     {% endif %}
-    <form action="{% url 'get_recipes' %}" method="get">
+    <form action="{% url 'recipes:get_recipes' %}" method="get">
+        {% csrf_token %}
         <label for="search_term">Search Term:</label>
         <input type="text" id="search_term" name="search_term" required>
         <button type="submit">Search</button>

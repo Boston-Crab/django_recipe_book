@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from recipe_book.settings import MEAL_API_URL
 
 
-# Create your views here.
 
 def get_recipies_by_name(request):
     search_term = request.GET.get('search_term', '')
