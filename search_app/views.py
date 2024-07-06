@@ -1,6 +1,5 @@
 import requests
 from django.shortcuts import render
-from django.http import HttpResponse
 from recipe_book.settings import MEAL_API_URL
 
 
