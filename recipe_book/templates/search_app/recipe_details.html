@@ -14,4 +14,12 @@
     <li><a href="{{ meal_source }}">Link to the meal's source</a></li>
     <li>{{ meal_instructions }}</li>
 </ul>
+<!-- Comment submit form: -->
+<form action="">
+    {% csrf_token %}
+    <textarea rows="4" cols="50" name="comment"></textarea>
+    <br>
+    <input type="submit">
+</form>
+ 
 {% endblock content %}
