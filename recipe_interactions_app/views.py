@@ -18,7 +18,12 @@ def like_recipe(request, recipe_id):
 
 @login_required
 def unlike_recipe(request, recipe_id):
-    pass
+    recipe = get_object_or_404(RecipeIDFormApi, recipe_id_from_api=recipe_id)
+    like = Like.objects.filter(user=request.user, recipe=recipe).first()
+    if like:
+        like.delete()
+    return redirect(reverse('recipes:get_recipe_by_id', kwargs={'meal_id': recipe_id}))
+    
 
 
 @login_required
