@@ -9,7 +9,7 @@
     {% endif %}
     <p class="black">Hi, {{ request.user.username|capfirst }}. This is your account management panel</p>
     <p class="black">Email: {{ request.user.email }}</p>
-    <a href="{% url 'user:change_password' %}"><button>Change Password</button></a>
-    <a href="{% url 'user:change_email' %}"><button>Change Email</button></a>
+    <a href="{% url 'user:change_password' %}"><button class="button-black">Change Password</button></a>
+    <a href="{% url 'user:change_email' %}"><button class="button-black">Change Email</button></a>
 {% endif %}
 {% endblock content %}

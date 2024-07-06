@@ -25,24 +25,24 @@ Likes - {{ current_recipe_likes }} | Dislikes - {{ current_recipe_dislikes }}
     {% if is_it_liked_by_current_user %}
         <form method="post" action="{% url 'recipe_interaction:unlike_recipe' recipe_id=meal_id %}">
             {% csrf_token %}
-            <button type="submit">Remove Like</button>
+            <button type="submit" class="button-black">Remove Like</button>
         </form>
     {% else %}
         <form method="post" action="{% url 'recipe_interaction:like_recipe' recipe_id=meal_id %}">
             {% csrf_token %}
-            <button type="submit">Like</button>
+            <button type="submit" class="button-black">Like</button>
         </form> 
     {% endif %}
     <!-- Dislike/Remove Dislike button forms: -->
     {% if is_it_disliked_by_current_user %}
         <form method="post" action="{% url 'recipe_interaction:undislike_recipe' recipe_id=meal_id %}">
             {% csrf_token %}
-            <button type="submit">Remove Dislike</button>
+            <button type="submit" class="button-black">Remove Dislike</button>
         </form>
     {% else %}
         <form method="post" action="{% url 'recipe_interaction:dislike_recipe' recipe_id=meal_id %}">
             {% csrf_token %}
-            <button type="submit">Dislike</button>
+            <button type="submit" class="button-black">Dislike</button>
         </form> 
     {% endif %}
 {% endif %}
@@ -53,7 +53,7 @@ Likes - {{ current_recipe_likes }} | Dislikes - {{ current_recipe_dislikes }}
     {% csrf_token %}
     <textarea rows="4" cols="50" name="comment_text" placeholder="Leave a comment"></textarea>
     <br>
-    <button type="submit">Submit Comment</button>
+    <button type="submit" class="button-black">Submit Comment</button>
 </form>
 {% endif %}
 

@@ -13,3 +13,43 @@
 .black-background {
     background-color: #161B21;
 }
+
+.button-orange {
+    transition: 0.2s;
+    border: none;
+    font-weight: bold;
+    padding: 1rem;
+    margin: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    background-color: #F3A950;
+    color: #161B21;
+}
+
+.button-orange:hover {
+    transition: 0.2s;
+    gap: 1rem;
+    background-color: rgb(202, 177, 35);
+  }
+
+.button-black {
+    transition: 0.2s;
+    border: none;
+    font-weight: bold;
+    padding: 1rem;
+    margin: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    background-color: #161B21;
+    color: #F3A950;
+}
+
+.button-black:hover {
+    transition: 0.2s;
+    gap: 1rem;
+    background-color: rgb(80, 80, 80);
+}
