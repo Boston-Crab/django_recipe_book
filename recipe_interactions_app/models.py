@@ -17,7 +17,7 @@ class Like(models.Model):
         unique_together = ('user', 'recipe')
     
     def __str__(self):
-        return f"User: {self.user} - LIKED - Recipe: {self.recipe}"
+        return f"User: {self.user.username} - LIKED - Recipe: {self.recipe.recipe_id_from_api}"
     
 class Dislike(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -29,7 +29,7 @@ class Dislike(models.Model):
         unique_together = ('user', 'recipe')
     
     def __str__(self):
-        return f"User: {self.user} - DISLIKED - Recipe: {self.recipe}"
+        return f"User: {self.user.username} - LIKED - Recipe: {self.recipe.recipe_id_from_api}"
     
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -52,11 +52,13 @@ def get_recipe_by_id(request, meal_id):
             try:
                 
                 is_liked_by_user = Like.objects.filter(user=request.user, recipe=form_id)
+                is_disliked_by_user = Dislike.objects.filter(user=request.user, recipe=form_id)
             except Exception:
                 is_liked_by_user = None
+                is_disliked_by_user = None
             # Get all likes for the current recipe:
             current_recipe_likes = Like.objects.filter(recipe=form_id)
-            
+            current_recipe_dislikes = Dislike.objects.filter(recipe=form_id)
             
             
             context = {
@@ -69,7 +71,9 @@ def get_recipe_by_id(request, meal_id):
                 'meal_ingredients': ingredients_list,
                 'meal_source': data['meals'][0]['strSource'],
                 'current_recipe_likes': current_recipe_likes.count(),
+                'current_recipe_dislikes': current_recipe_dislikes.count(),
                 'is_it_liked_by_current_user': is_liked_by_user,
+                'is_it_disliked_by_current_user': is_disliked_by_user,
             }
 
             return render(request, 'search_app/recipe_details.html', context)

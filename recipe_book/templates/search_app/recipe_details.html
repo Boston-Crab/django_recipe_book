@@ -23,19 +23,33 @@
 </form>
 
 <!-- Number of likes: -->
-<p>Total likes - {{ current_recipe_likes }}</p>
+<p>
+Likes - {{ current_recipe_likes }} | Dislikes - {{ current_recipe_dislikes }}
+</p>
 
 {% if user.is_authenticated %}
-    <!-- Like/Unlike button forms: -->
+    <!-- Like/Remove Like button forms: -->
     {% if is_it_liked_by_current_user %}
         <form method="post" action="{% url 'recipe_interaction:unlike_recipe' recipe_id=meal_id %}">
             {% csrf_token %}
-            <button type="submit">Unlike</button>
+            <button type="submit">Remove Like</button>
         </form>
     {% else %}
         <form method="post" action="{% url 'recipe_interaction:like_recipe' recipe_id=meal_id %}">
             {% csrf_token %}
             <button type="submit">Like</button>
+        </form> 
+    {% endif %}
+    <!-- Dislike/Remove Dislike button forms: -->
+    {% if is_it_disliked_by_current_user %}
+        <form method="post" action="{% url 'recipe_interaction:undislike_recipe' recipe_id=meal_id %}">
+            {% csrf_token %}
+            <button type="submit">Remove Dislike</button>
+        </form>
+    {% else %}
+        <form method="post" action="{% url 'recipe_interaction:dislike_recipe' recipe_id=meal_id %}">
+            {% csrf_token %}
+            <button type="submit">Dislike</button>
         </form> 
     {% endif %}
 {% endif %}
