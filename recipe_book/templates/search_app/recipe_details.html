@@ -21,7 +21,12 @@
     <br>
     <input type="submit">
 </form>
-<form method="post" action="{% url 'like_recipe' %}">
+
+<!-- Number of likes: -->
+<p>This recipe has {{ current_recipe_likes }} likes.</p>
+
+<!-- Like button form: -->
+<form method="post" action="{% url 'recipe_interaction:like_recipe' recipe_id=meal_id %}">
     {% csrf_token %}
     <button type="submit">Like</button>
 </form> 

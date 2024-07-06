@@ -3,6 +3,7 @@ from django.shortcuts import render, get_list_or_404
 from recipe_book.settings import MEAL_API_URL
 from recipe_interactions_app.views import (
     Like,
+    RecipeIDFormApi,
 )
 
 
@@ -44,8 +45,13 @@ def get_recipe_by_id(request, meal_id):
                         ingredients_list.append(
                             f"{meal[ingredient_key]} - {meal[measurement_key]}"
                         )
-            recipe_likes = get_list_or_404(Like, recipe=meal_id)
-            print(recipe_likes)
+            # Get or create the RecipeIDFormApi instance:
+            form_id, created = RecipeIDFormApi.objects.get_or_create(recipe_id_from_api=meal_id)
+            
+            # Get all likes for the current recipe:
+            current_recipe_likes = Like.objects.filter(recipe=form_id)
+            
+            
             context = {
                 'meal_id': data['meals'][0]['idMeal'],
                 'meal_title': data['meals'][0]['strMeal'],
@@ -55,6 +61,7 @@ def get_recipe_by_id(request, meal_id):
                 'meal_image': data['meals'][0]['strMealThumb'],
                 'meal_ingredients': ingredients_list,
                 'meal_source': data['meals'][0]['strSource'],
+                'current_recipe_likes': current_recipe_likes.count(),
             }
 
             return render(request, 'search_app/recipe_details.html', context)
