@@ -1,18 +1,20 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<header>
-    <h1>Meal Recipes Django Web App Using TheMealDB API</h1>
+<header class="black-background">
+    <h1 class="orange">Meal Recipes Django Web App Using TheMealDB API</h1>
     <a href="{% url 'recipes:index' %}">
         <button>Home</button>
     </a>
     {% if request.user.is_authenticated %}
-        <p>{{ request.user.username|capfirst }}</p>
+        <p class="orange">{{ request.user.username|capfirst }}</p>
         <a href="{% url 'user:logout' %}"><button>Logout</button></a>
         <a href="{% url 'user:account' %}"><button>My Account</button></a>
     {% else %}
@@ -20,7 +22,7 @@
         <a href="{% url 'user:signup' %}"><button>Signup</button></a>
     {% endif %}
 </header>
-<body>
+<body class="orange-background">
     {% block content %}
     {% endblock %}
 </body>

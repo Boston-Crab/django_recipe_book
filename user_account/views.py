@@ -73,17 +73,3 @@ def user_email_change(request):
     else:
         form = EmailChangeForm(user=request.user, initial={'email': request.user.email})
     return render(request, "user_account/change_email.html", {'form': form})
-
-# @login_required
-# def user_email_change(request):
-#     if request.method == 'POST':
-#         form = EmailChangeForm(request.user, request.POST)
-#         if form.is_valid():
-#             form.save()
-#             update_session_auth_hash(request, form.user)
-#             messages.success(request, 'You email has been changed.')
-#             return redirect('user:account')
-#     else:
-#         form = EmailChangeForm(user=request.user)
-#     return render(request, "user_account/change_email.html", {'form':form})
-

@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Search for Recipes</h1>
-    <br>
-    {% if message %}
-    <p>{{ message }}</p>
-    {% endif %}
-    <form action="{% url 'recipes:get_recipes' %}" method="get">
-        {% csrf_token %}
-        <label for="search_term">Search Term:</label>
-        <input type="text" id="search_term" name="search_term" required>
-        <button type="submit">Search</button>
-    </form>
+<h1 class="black">Search for Recipes</h1>
+<br>
+{% if message %}
+<p class="orange">{{ message }}</p>
+{% endif %}
+<form action="{% url 'recipes:get_recipes' %}" method="get">
+    {% csrf_token %}
+    <label for="search_term" class="black">Search Term:</label>
+    <input type="text" id="search_term" name="search_term" required>
+    <button type="submit">Search</button>
+</form>
 {% endblock content %}
