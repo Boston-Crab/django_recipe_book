@@ -23,7 +23,6 @@ def like_recipe(request, recipe_id):
         Like.objects.create(user=request.user, recipe=recipe)
     return redirect_to_current_recipe_page(recipe_id)
 
-
 @login_required
 def unlike_recipe(request, recipe_id):
     recipe = get_object_or_404(RecipeIDFormApi, recipe_id_from_api=recipe_id)
@@ -32,8 +31,6 @@ def unlike_recipe(request, recipe_id):
         like.delete()
     return redirect_to_current_recipe_page(recipe_id)
     
-
-
 @login_required
 def dislike_recipe(request, recipe_id):
     # Check if it was liked, when true - delete that like
@@ -47,11 +44,20 @@ def dislike_recipe(request, recipe_id):
         Dislike.objects.create(user=request.user, recipe=recipe)
     return redirect_to_current_recipe_page(recipe_id)
 
-
 @login_required
 def undislike_recipe(request, recipe_id):
     recipe = get_object_or_404(RecipeIDFormApi, recipe_id_from_api=recipe_id)
     like = Dislike.objects.filter(user=request.user, recipe=recipe).first()
     if like:
         like.delete()
+    return redirect_to_current_recipe_page(recipe_id)
+
+@login_required
+def leave_a_comment(request, recipe_id):
+    recipe = RecipeIDFormApi.objects.get(recipe_id_from_api=recipe_id)
+    
+    if request.method == 'POST':
+        comment_text = request.POST.get('comment_text')
+        Comment.objects.create(user=request.user, recipe=recipe, comment_text=comment_text)
+    
     return redirect_to_current_recipe_page(recipe_id)

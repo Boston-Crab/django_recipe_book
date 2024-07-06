@@ -5,6 +5,7 @@ from recipe_interactions_app.models import (
     Like,
     Dislike,
     RecipeIDFormApi,
+    Comment
 )
 
 
@@ -48,17 +49,21 @@ def get_recipe_by_id(request, meal_id):
                         )
 
             # Get or create the RecipeIDFormApi instance:
-            form_id, created = RecipeIDFormApi.objects.get_or_create(recipe_id_from_api=meal_id)
+            recipe_id, created = RecipeIDFormApi.objects.get_or_create(recipe_id_from_api=meal_id)
             try:
                 
-                is_liked_by_user = Like.objects.filter(user=request.user, recipe=form_id)
-                is_disliked_by_user = Dislike.objects.filter(user=request.user, recipe=form_id)
+                is_liked_by_user = Like.objects.filter(user=request.user, recipe=recipe_id)
+                is_disliked_by_user = Dislike.objects.filter(user=request.user, recipe=recipe_id)
             except Exception:
                 is_liked_by_user = None
                 is_disliked_by_user = None
+                
             # Get all likes for the current recipe:
-            current_recipe_likes = Like.objects.filter(recipe=form_id)
-            current_recipe_dislikes = Dislike.objects.filter(recipe=form_id)
+            current_recipe_likes = Like.objects.filter(recipe=recipe_id)
+            current_recipe_dislikes = Dislike.objects.filter(recipe=recipe_id)
+
+            # Get all comments:
+            all_comments = Comment.objects.filter(recipe=recipe_id).order_by('-comment_date')
             
             
             context = {
@@ -74,6 +79,7 @@ def get_recipe_by_id(request, meal_id):
                 'current_recipe_dislikes': current_recipe_dislikes.count(),
                 'is_it_liked_by_current_user': is_liked_by_user,
                 'is_it_disliked_by_current_user': is_disliked_by_user,
+                'comments': all_comments,
             }
 
             return render(request, 'search_app/recipe_details.html', context)

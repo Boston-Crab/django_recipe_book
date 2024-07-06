@@ -36,3 +36,6 @@ class Comment(models.Model):
     recipe = models.ForeignKey(RecipeIDFormApi, on_delete=models.CASCADE)
     comment_text = models.TextField(max_length=1000)
     comment_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comment by {self.user.username} on Recipe ID: {self.recipe.recipe_id_from_api}"
