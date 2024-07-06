@@ -4,7 +4,7 @@
 {% if request.user.is_authenticated %}
     {% if messages %}
         {% for message in messages %}
-            <p class="{{ message.tags }}">{{ message }}</p>
+            <p class="information-popup"{{ message.tags }}">{{ message }}</p>
         {% endfor %}
     {% endif %}
     <p class="black">Hi, {{ request.user.username|capfirst }}. This is your account management panel</p>

@@ -1,3 +1,14 @@
+header {
+    margin: 0rem;
+    padding: 1rem;
+}
+
+body {
+    margin: 0;
+
+    padding: 0;
+}
+
 .orange {
     color: #F3A950;
 }
@@ -52,4 +63,28 @@
     transition: 0.2s;
     gap: 1rem;
     background-color: rgb(80, 80, 80);
+}
+
+.input-field {
+    border: solid;
+    border-radius: 0.2rem;
+    border-color: #161B21;
+    font-weight: bold;
+    padding: 1rem;
+    margin: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+}
+
+.center-everything {
+    align-items: center;
+    text-align: center;
+}
+
+.information-popup {
+    background-color: greenyellow;
 }

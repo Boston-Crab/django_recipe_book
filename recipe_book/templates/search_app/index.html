@@ -4,12 +4,11 @@
 <h1 class="black">Search for Recipes</h1>
 <br>
 {% if message %}
-<p class="orange">{{ message }}</p>
+<p class="black information-popup">{{ message }}</p>
 {% endif %}
 <form action="{% url 'recipes:get_recipes' %}" method="get">
     {% csrf_token %}
-    <label for="search_term" class="black">Search Term:</label>
-    <input type="text" id="search_term" name="search_term" required>
+    <input type="text" id="search_term" name="search_term" class="input-field" required>
     <button type="submit" class="button-black">Search</button>
 </form>
 {% endblock content %}

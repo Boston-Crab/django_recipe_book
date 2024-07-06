@@ -67,4 +67,9 @@ Likes - {{ current_recipe_likes }} | Dislikes - {{ current_recipe_dislikes }}
         <p class="black">No comments yet.</p>
     {% endfor %}
 </ul>
+
+{% if not user.is_authenticated %}
+    <a href="{% url 'user:login' %}"><button class="button-black">Login To Comment And Like</button></a>
+    <a href="{% url 'user:signup' %}"><button class="button-black">Signup</button></a>
+{% endif %}
 {% endblock content %}

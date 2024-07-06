@@ -12,6 +12,7 @@ from .forms import (
     SignupForm,
     LoginForm,
     EmailChangeForm,
+    CustomPasswordChangeForm,
 )
 
 def user_signup(request):
@@ -50,14 +51,14 @@ def user_account(request):
 @login_required
 def user_change_password(request):
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
+        form = CustomPasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
             messages.success(request, 'Your password has been changed.')
             return redirect('user:account')
     else:
-        form = PasswordChangeForm(user=request.user)
+        form = CustomPasswordChangeForm(user=request.user)
     return render(request, "user_account/change_password.html", {'form':form})
 
 @login_required
