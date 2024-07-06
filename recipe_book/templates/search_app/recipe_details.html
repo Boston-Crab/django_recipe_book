@@ -4,8 +4,8 @@
 <h2 class="black">Recipe Details for Meal ID: {{ meal_id }}</h2>
 
 <ul class="black">
-    <li>{{ meal_title }}</li>
-    <li><img src="{{ meal_image }}" alt="Meal Thumbnail"></li>
+    <li><h2>--- {{ meal_title }} ---</h2></li>
+    <li><img src="{{ meal_image }}" alt="Meal Thumbnail" class="recipe-image"></li>
     {% for item in meal_ingredients %}
         <li>{{ item }}</li>
     {% endfor %}
@@ -19,33 +19,34 @@
 <p class="black">
 Likes - {{ current_recipe_likes }} | Dislikes - {{ current_recipe_dislikes }}
 </p>
-
-{% if user.is_authenticated %}
-    <!-- Like/Remove Like button forms: -->
-    {% if is_it_liked_by_current_user %}
-        <form method="post" action="{% url 'recipe_interaction:unlike_recipe' recipe_id=meal_id %}">
-            {% csrf_token %}
-            <button type="submit" class="button-black">Remove Like</button>
-        </form>
-    {% else %}
-        <form method="post" action="{% url 'recipe_interaction:like_recipe' recipe_id=meal_id %}">
-            {% csrf_token %}
-            <button type="submit" class="button-black">Like</button>
-        </form> 
+<div class="buttons-in-one-line">
+    {% if user.is_authenticated %}
+        <!-- Like/Remove Like button forms: -->
+        {% if is_it_liked_by_current_user %}
+            <form method="post" action="{% url 'recipe_interaction:unlike_recipe' recipe_id=meal_id %}">
+                {% csrf_token %}
+                <button type="submit" class="button-black">Remove Like</button>
+            </form>
+        {% else %}
+            <form method="post" action="{% url 'recipe_interaction:like_recipe' recipe_id=meal_id %}">
+                {% csrf_token %}
+                <button type="submit" class="button-black">Like</button>
+            </form> 
+        {% endif %}
+        <!-- Dislike/Remove Dislike button forms: -->
+        {% if is_it_disliked_by_current_user %}
+            <form method="post" action="{% url 'recipe_interaction:undislike_recipe' recipe_id=meal_id %}">
+                {% csrf_token %}
+                <button type="submit" class="button-black">Remove Dislike</button>
+            </form>
+        {% else %}
+            <form method="post" action="{% url 'recipe_interaction:dislike_recipe' recipe_id=meal_id %}">
+                {% csrf_token %}
+                <button type="submit" class="button-black">Dislike</button>
+            </form> 
+        {% endif %}
     {% endif %}
-    <!-- Dislike/Remove Dislike button forms: -->
-    {% if is_it_disliked_by_current_user %}
-        <form method="post" action="{% url 'recipe_interaction:undislike_recipe' recipe_id=meal_id %}">
-            {% csrf_token %}
-            <button type="submit" class="button-black">Remove Dislike</button>
-        </form>
-    {% else %}
-        <form method="post" action="{% url 'recipe_interaction:dislike_recipe' recipe_id=meal_id %}">
-            {% csrf_token %}
-            <button type="submit" class="button-black">Dislike</button>
-        </form> 
-    {% endif %}
-{% endif %}
+</div>
 
 <!-- Comment submit form -->
 {% if user.is_authenticated %}
