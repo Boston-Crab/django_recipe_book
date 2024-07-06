@@ -14,7 +14,7 @@ class Like(models.Model):
 
     # to stop from liking more than 1 time:
     class Meta:
-        unique_together = ('user', 'article')
+        unique_together = ('user', 'recipe')
     
     def __str__(self):
         return f"User: {self.user} - LIKED - Recipe: {self.recipe}"
@@ -26,7 +26,7 @@ class Dislike(models.Model):
 
     # to stop from disliking more than 1 time:
     class Meta:
-        unique_together = ('user', 'article')
+        unique_together = ('user', 'recipe')
     
     def __str__(self):
         return f"User: {self.user} - DISLIKED - Recipe: {self.recipe}"
