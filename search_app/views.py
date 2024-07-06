@@ -1,5 +1,5 @@
 import requests
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render
 from recipe_book.settings import MEAL_API_URL
 from recipe_interactions_app.models import (
     Like,
@@ -57,7 +57,7 @@ def get_recipe_by_id(request, meal_id):
             except Exception:
                 is_liked_by_user = None
                 is_disliked_by_user = None
-                
+
             # Get all likes for the current recipe:
             current_recipe_likes = Like.objects.filter(recipe=recipe_id)
             current_recipe_dislikes = Dislike.objects.filter(recipe=recipe_id)
