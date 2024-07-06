@@ -1,6 +1,9 @@
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 from recipe_book.settings import MEAL_API_URL
+from recipe_interactions_app.views import (
+    Like,
+)
 
 
 
@@ -41,7 +44,8 @@ def get_recipe_by_id(request, meal_id):
                         ingredients_list.append(
                             f"{meal[ingredient_key]} - {meal[measurement_key]}"
                         )
-
+            recipe_likes = get_list_or_404(Like, recipe=meal_id)
+            print(recipe_likes)
             context = {
                 'meal_id': data['meals'][0]['idMeal'],
                 'meal_title': data['meals'][0]['strMeal'],
@@ -54,6 +58,8 @@ def get_recipe_by_id(request, meal_id):
             }
 
             return render(request, 'search_app/recipe_details.html', context)
+    else:
+        return render(request, "search_app/index.html")
 
 
 def index(request):
