@@ -3,17 +3,25 @@
 {% block content %}
 <h2 class="black">Recipe Details for Meal ID: {{ meal_id }}</h2>
 
-<ul class="black">
+<ul class="black list-no-deco">
     <li><h2>--- {{ meal_title }} ---</h2></li>
     <li><img src="{{ meal_image }}" alt="Meal Thumbnail" class="recipe-image"></li>
-    {% for item in meal_ingredients %}
-        <li>{{ item }}</li>
-    {% endfor %}
-    <li>Region - {{ meal_culture }}</li>
-    <li>Cetegory - {{ meal_category }}</li>
-    <li><a href="{{ meal_source }}">Link to the meal's source</a></li>
-    <li>{{ meal_instructions }}</li>
 </ul>
+
+<div class="flex-container">
+    <div class="black">
+        <li class="flex-container list-no-deco">Region - {{ meal_culture }}</li>
+        <li class="flex-container list-no-deco">Cetegory - {{ meal_category }}</li>
+        <li class="flex-container list-no-deco margin-1rem">--- Ingredients ---</li>
+        {% for item in meal_ingredients %}
+        <li class="flex-container list-no-deco">{{ item }}</li>
+        {% endfor %}
+    </div>
+    <div class="black">
+        <li class="flex-container list-no-deco margin-1rem">--- Instructions ---</li>
+        <li class="flex-container list-no-deco">{{ meal_instructions }}</li>
+    </div>
+</div>
 
 <!-- Number of likes: -->
 <p class="black">
@@ -60,14 +68,16 @@ Likes - {{ current_recipe_likes }} | Dislikes - {{ current_recipe_dislikes }}
 
 <!-- Display all comments -->
 <h3 class="black">Comments</h3>
-<ul>
+<div class="flex-comments">
     {% for comment in comments %}
-        <p class="black"><b>By {{ comment.user.username|capfirst }} on {{ comment.comment_date|date:"F d, Y" }}</b></p>
-        <p class="black">{{ comment.comment_text }}</p>
+        <div>
+            <p class="black"><b>By {{ comment.user.username|capfirst }} on {{ comment.comment_date|date:"F d, Y" }}</b></p>
+            <p class="black">{{ comment.comment_text }}</p>
+        </div>
     {% empty %}
         <p class="black">No comments yet.</p>
     {% endfor %}
-</ul>
+</div>
 
 {% if not user.is_authenticated %}
     <a href="{% url 'user:login' %}"><button class="button-black">Login To Comment And Like</button></a>
