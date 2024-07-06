@@ -60,7 +60,7 @@ Likes - {{ current_recipe_likes }} | Dislikes - {{ current_recipe_dislikes }}
 {% if user.is_authenticated %}
 <form method="post" action="{% url 'recipe_interaction:commenting' recipe_id=meal_id %}">
     {% csrf_token %}
-    <textarea rows="4" cols="50" name="comment_text" placeholder="Leave a comment"></textarea>
+    <textarea rows="4" cols="50" name="comment_text" placeholder="Leave a comment" class="input-field"></textarea>
     <br>
     <button type="submit" class="button-black">Submit Comment</button>
 </form>
