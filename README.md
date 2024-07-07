@@ -1,3 +1,29 @@
 # django_recipe_book
-Django backend project using The Meal DB recipe api
-https://www.themealdb.com/api.php
+Django backend project using <a href="https://www.themealdb.com/api.php" target="_blank">The Meal DB recipe api</a>
+
+Website preview link:
+https://recipe-book-app-iycdh.ondigitalocean.app/
+
+### --- Features ---
+<ul>
+  <li>Recipes retrieval from API</li>
+  <li>Sign-up, Login, Logout</li>
+  <li>Change email/password</li>
+  <li>Like/Dislike a recipe</li>
+  <li>Write a comment for all to see for every recipe</li>
+</ul>
+
+### --- Known Issues ---
+<ul>
+  <li>Frontend is not displayed correctly on phones/small screens</li>
+</ul>
+
+### --- Instructions To Run With LocalHost ---
+1. Create and activate a virtual environment:
+  - `python -m venv venv`
+  - `For Linux: source venv/bin/activate or for Windows: .\venv\Scripts\activate`
+2. Install requirements:
+  - `pip install -r requirements.txt`
+3. Change DEBUG and DEVELOPMENT_MODE in recipe_book/settings.py to:
+  - `DEBUG = os.getenv("DEBUG", "True") == "True"`
+  - `DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "True") == "True"`
