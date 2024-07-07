@@ -143,10 +143,32 @@ body {
     width: 30rem;
 }
 
+.flex-searched-results {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: normal;
+    align-items: normal;
+    align-content: normal;
+}
+  
+.flex-searched-item {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+}
+
 .list-no-deco {
     list-style: none;
 }
 
 .margin-1rem {
     margin: 1rem;
+}
+
+.font-size-increase {
+    font-size: 1.2rem;
 }

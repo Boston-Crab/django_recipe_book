@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% for meal in data %}
-  <ul class="black">
-      <li>{{ meal.idMeal }}</li>
-      <li>{{ meal.strMeal }}</li>
-      <li><a href="{% url 'recipes:get_recipe_by_id' meal.idMeal %}"><img src="{{ meal.strMealThumb }}" alt="Meal Thumbnail"></a></li>
-      <li>Category: {{ meal.strCategory }}</li>
-      <li>Culture - {{ meal.strArea }}</li>
-  </ul>
-{% endfor %}
+  {% for meal in data %}
+    <ul>
+      <li class="list-no-deco">--- {{ meal.idMeal }} ---</li>
+      <li class="list-no-deco">{{ meal.strMeal }}</li>
+      <li class="list-no-deco"><a href="{% url 'recipes:get_recipe_by_id' meal.idMeal %}"><img src="{{ meal.strMealThumb }}" alt="Meal Thumbnail" class="recipe-image"></a></li>
+      <li class="list-no-deco">Category - {{ meal.strCategory }}</li>
+      <li class="list-no-deco">Culture - {{ meal.strArea }}</li>
+    </ul>
+  {% endfor %}
 {% endblock content %}
 
