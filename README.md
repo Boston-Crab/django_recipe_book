@@ -1,4 +1,4 @@
-# django_recipe_book
+# DJANGO RECIPE BOOK
 Django backend project using <a href="https://www.themealdb.com/api.php" target="_blank">The Meal DB recipe api</a>
 
 Website preview link:
