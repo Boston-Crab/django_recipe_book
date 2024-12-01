@@ -10,7 +10,7 @@ https://recipe-book-app-iycdh.ondigitalocean.app/
   <li>Sign-up, Login, Logout</li>
   <li>Change email/password</li>
   <li>Like/Dislike a recipe</li>
-  <li>Write a comment for all to see for every recipe</li>
+  <li>User written a comments for every recipe</li>
 </ul>
 
 ### --- Known Issues ---
