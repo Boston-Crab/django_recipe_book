@@ -1,8 +1,7 @@
 # DJANGO RECIPE BOOK
 Django backend project using <a href="https://www.themealdb.com/api.php" target="_blank">The Meal DB recipe api</a>
 
-Website preview link:
-https://recipe-book-app-iycdh.ondigitalocean.app/
+Website preview link: **The website is no longer hosted.**
 
 ### --- Features ---
 <ul>
